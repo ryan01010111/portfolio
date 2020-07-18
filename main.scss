@@ -1,0 +1,306 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    height: 60px;
+    display: flex;
+    
+    ul {
+        flex: 1;
+        list-style-type: none;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        border: 2px solid #000;
+
+        li {
+            display: inline;
+            margin: 0 24px;
+            font-size: 1.2em;
+        }
+    }
+}
+
+#section1 {
+    height: 100vh;
+    text-align: center;
+    background-color: #777;
+    padding: 12px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+}
+
+#welcome-msg {
+    height: 400px;
+    margin: 60px 0 0 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        padding: 12px 12px 20px 12px;
+    }
+}
+
+#welcome-msg-1,
+#welcome-msg-2,
+#welcome-msg-3 {
+    position: relative;
+    margin: 0;
+    background-color: #777;
+    z-index: 3;
+}
+
+#welcome-msg-4 {
+    justify-self: flex-end;
+    opacity: 0;
+    margin: 16px 0;
+}
+
+#welcome-msg span {
+    position: absolute;
+    opacity: 0;
+}
+
+#top1 {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: #fff;
+    margin-right: 100%;
+}
+
+#right1,
+#right3 {
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 0;
+    background-color: #fff;
+    margin-bottom: 100%;
+}
+
+#left2 {
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background-color: #fff;
+    margin-bottom: 100%;
+}
+
+#bottom1,
+#bottom3 {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: #fff;
+    margin-left: 100%;
+}
+
+#bottom2 {
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: #fff;
+    margin-right: 100%;
+}
+
+#section2 {
+    height: 1200px;
+    background-color: #aaa;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    
+    h2 {
+        text-align: center;
+        width: 100%;
+        position: absolute;
+        top: 400px;
+        left: 0;
+        margin: 0;
+        z-index: 3;
+    }
+}
+
+#floor {
+    width: 100%;
+    height: 40px;
+    background-color: rgb(153, 104, 59);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+}
+
+#toolbox {
+    width: 300px;
+    height: 80px;
+    background-color: rgb(247, 156, 53);
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 150px);
+    z-index: 3;
+
+}
+
+#toolbox-lid {
+    width: 280px;
+    height: 100px;
+    background-color: rgb(247, 156, 53);
+    position: absolute;
+    bottom: 102px;
+    left: calc(50% - 140px);
+}
+
+#mdb-animate,
+#node-animate,
+#react-animate {
+    position: absolute;
+    opacity: 0.3;
+    z-index: 2;
+}
+
+#python-animate,
+#sass-animate {
+    position: absolute;
+    opacity: 0;
+    z-index: 1;
+}
+
+#mdb-animate {
+    width: 70px;
+    top: -150px;
+    left: calc(15% - 35px);
+}
+
+.mdb-1 {
+    fill:#10aa50;
+}
+
+.mdb-2 {
+    fill:#b2bdbb;
+}
+
+.mdb-3 {
+    fill:#12924f;
+}
+
+.mdb-4 {
+    fill:#21313c;
+}
+
+#node-animate {
+    width: 120px;
+    top: -310px;
+    left: calc(50% - 60px);
+}
+
+#node-animate,
+#node-logo {
+    path {
+        fill: rgb(100, 173, 40);
+    }
+}
+
+#react-animate {
+    width: 130px;
+    top: -200px;
+    left: calc(85% - 65px);
+}
+
+#react-animate,
+#react-logo {
+    path {
+        fill: rgb(93, 206, 235);
+    }
+}
+
+#python-animate {
+    width: 100px;
+    top: 260px;
+    left: calc(32% - 50px);
+}
+
+.python-1 {
+    fill: rgb(255, 217, 49);
+}
+
+.python-2 {
+    fill: rgb(78, 104, 177);
+}
+
+#sass-animate {
+    width: 100px;
+    top: 180px;
+    left: calc(68% - 50px);
+}
+
+#sass-animate,
+#sass-logo {
+    path {
+        fill: rgb(201, 42, 69);
+    }
+}
+
+#section3 {
+    height: 100vh;
+    background-color: #97afdf;
+}
+
+#js-logo {
+    width: 80px;
+
+    path {
+        fill: rgb(241, 227, 22);
+    }
+}
+
+#node-logo,
+#python-logo {
+    width: 80px;
+}
+
+#react-logo {
+    width: 94px;
+}
+
+#mdb-logo {
+    width: 42px;
+}
+
+#sass-logo {
+    width: 90px;
+}
+
+#psql-logo {
+    width: 74px;
+}
+
+#section4 {
+    height: 100vh;
+    background-color: #5599aa;
+}
+
+#section5 {
+    height: 100vh;
+    background-color: #88ccff;
+}
