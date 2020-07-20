@@ -1,3 +1,10 @@
+// event listeners
+document.querySelector('#nav-menu-btn').addEventListener('click', () => {
+    document.querySelector('nav').classList.toggle('hide');
+});
+
+
+// animations
 gsap.registerPlugin(ScrollTrigger);
 const timeline = gsap.timeline();
 
@@ -32,19 +39,19 @@ const logoTrigger =  {
     trigger: '#section2',
     start: 'top center',
     end: '80% center',
-    scrub: true,
+    scrub: true
 };
 
 const logoTrigger2 =  {
     trigger: '#section2',
     start: 'top 70%',
     end: '80% center',
-    scrub: true,
+    scrub: true
 };
 
-gsap.to('#mdb-animate', {
+gsap.to('#animate-mdb', {
     scrollTrigger: logoTrigger,
-    opacity: 1,
+    opacity: 0.9,
     width: 52,
     top: 1100,
     left: 'calc(50% - 26px)',
@@ -52,9 +59,9 @@ gsap.to('#mdb-animate', {
     ease: 'none'
 });
 
-gsap.to('#node-animate', {
+gsap.to('#animate-node', {
     scrollTrigger: logoTrigger,
-    opacity: 1,
+    opacity: 0.9,
     width: 80,
     top: 1100,
     left: 'calc(50% - 40px)',
@@ -62,9 +69,9 @@ gsap.to('#node-animate', {
     ease: 'none'
 });
 
-gsap.to('#react-animate', {
+gsap.to('#animate-react', {
     scrollTrigger: logoTrigger,
-    opacity: 1,
+    opacity: 0.9,
     width: 90,
     top: 1100,
     left: 'calc(50% - 45px)',
@@ -72,9 +79,9 @@ gsap.to('#react-animate', {
     ease: 'none'
 });
 
-gsap.to('#python-animate', {
+gsap.to('#animate-python', {
     scrollTrigger: logoTrigger2,
-    opacity: 1,
+    opacity: 0.9,
     width: 90,
     top: 1100,
     left: 'calc(50% - 45px)',
@@ -82,12 +89,29 @@ gsap.to('#python-animate', {
     ease: 'none'
 });
 
-gsap.to('#sass-animate', {
+gsap.to('#animate-sass', {
     scrollTrigger: logoTrigger2,
-    opacity: 1,
+    opacity: 0.9,
     width: 90,
     top: 1100,
     left: 'calc(50% - 45px)',
     rotation: 200,
     ease: 'none'
 });
+
+const timeline2 = gsap.timeline({
+    scrollTrigger: {
+        trigger: '#section3',
+        start: 'top center',
+        end: 'bottom center',
+        toggleActions: 'restart pause resume none',
+        markers: true
+    }
+});
+
+timeline2
+    .from('#js-logo', { duration: 2, opacity: 0, x: 250, y: -300 })
+    .from('#react-logo', { duration: 2, opacity: 0, x: -50, y: -300 }, 0.3)
+    .from('#mdb-logo', { duration: 2, opacity: 0, x: -150, y: -300 }, 0.6)
+    .from('#sass-logo', { duration: 2, opacity: 0, x: 50, y: -420 }, 0.9)
+    .from('#skills-header', { duration: 1, opacity: 0, x: -250 }, 1)

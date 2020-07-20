@@ -9,38 +9,77 @@ body {
 
 a {
     text-decoration: none;
+    color: #fff;
+}
+
+.hide {
+    width: 0;
+}
+
+#nav-menu-btn {
+    width: 40px;
+    position: fixed;
+    top: 16px;
+    right: 30px;
+    z-index: 10;
+
+    div {
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+    }
+
+    div:nth-child(2) {
+        margin: 12px 0;
+    }
 }
 
 nav {
-    height: 60px;
-    display: flex;
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    color: #fff;
+    border-left: 2px solid rgba(#555, 0.4);
+    background-color: rgba(transparent, 0.4);
+    z-index: 4;
     
     ul {
         flex: 1;
         list-style-type: none;
         display: flex;
+        flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        margin: 0;
+        margin: 140px 0 0 0;
         padding: 0;
-        border: 2px solid #000;
 
         li {
-            display: inline;
-            margin: 0 24px;
+            width: 100%;
+            margin: 8px 0;
+            padding: 0 24px;
             font-size: 1.2em;
         }
     }
 }
 
+#logo-main {
+    position: fixed;
+    top: 80px;
+    right: 28px;
+    font-size: 30px;
+    z-index: 10;
+}
+
 #section1 {
     height: 100vh;
     text-align: center;
-    background-color: #777;
     padding: 12px;
     position: relative;
     display: flex;
     justify-content: center;
+    background: url('../images/space1.jpg') center/cover no-repeat;
     z-index: 3;
 }
 
@@ -50,6 +89,7 @@ nav {
     text-align: left;
     display: flex;
     flex-direction: column;
+    font-size: 2em;
 
     h1 {
         padding: 12px 12px 20px 12px;
@@ -61,11 +101,11 @@ nav {
 #welcome-msg-3 {
     position: relative;
     margin: 0;
-    background-color: #777;
     z-index: 3;
 }
 
 #welcome-msg-4 {
+    position: relative;
     justify-self: flex-end;
     opacity: 0;
     margin: 16px 0;
@@ -74,14 +114,14 @@ nav {
 #welcome-msg span {
     position: absolute;
     opacity: 0;
+    background-color: #fff;
 }
 
 #top1 {
     top: 0;
     left: 0;
     width: 0;
-    height: 4px;
-    background-color: #fff;
+    height: 6px;
     margin-right: 100%;
 }
 
@@ -89,18 +129,16 @@ nav {
 #right3 {
     top: 0;
     right: 0;
-    width: 4px;
+    width: 6px;
     height: 0;
-    background-color: #fff;
     margin-bottom: 100%;
 }
 
 #left2 {
     top: 0;
     left: 0;
-    width: 4px;
+    width: 6px;
     height: 0;
-    background-color: #fff;
     margin-bottom: 100%;
 }
 
@@ -109,8 +147,7 @@ nav {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 4px;
-    background-color: #fff;
+    height: 6px;
     margin-left: 100%;
 }
 
@@ -118,14 +155,13 @@ nav {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 4px;
-    background-color: #fff;
+    height: 6px;
     margin-right: 100%;
 }
 
 #section2 {
     height: 1200px;
-    background-color: #aaa;
+    background-color: #000;
     padding: 40px;
     position: relative;
     overflow: hidden;
@@ -141,52 +177,39 @@ nav {
     }
 }
 
-#floor {
-    width: 100%;
-    height: 40px;
-    background-color: rgb(153, 104, 59);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 3;
-}
-
-#toolbox {
-    width: 300px;
-    height: 80px;
-    background-color: rgb(247, 156, 53);
+#black-hole {
+    width: 600px;
     position: absolute;
     bottom: 20px;
-    left: calc(50% - 150px);
-    z-index: 3;
-
+    left: calc(50% - 300px);
+    z-index: 1;
 }
 
-#toolbox-lid {
-    width: 280px;
-    height: 100px;
-    background-color: rgb(247, 156, 53);
+#black-hole2 {
+    width: 600px;
     position: absolute;
-    bottom: 102px;
-    left: calc(50% - 140px);
+    bottom: 0;
+    left: calc(50% - 300px);
+    border-bottom: 22px solid #000;
+    z-index: 3;
 }
 
-#mdb-animate,
-#node-animate,
-#react-animate {
+#animate-mdb,
+#animate-node,
+#animate-react {
     position: absolute;
     opacity: 0.3;
     z-index: 2;
 }
 
-#python-animate,
-#sass-animate {
+#animate-python,
+#animate-sass {
     position: absolute;
     opacity: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
-#mdb-animate {
+#animate-mdb {
     width: 70px;
     top: -150px;
     left: calc(15% - 35px);
@@ -208,33 +231,33 @@ nav {
     fill:#21313c;
 }
 
-#node-animate {
+#animate-node {
     width: 120px;
     top: -310px;
     left: calc(50% - 60px);
 }
 
-#node-animate,
+#animate-node,
 #node-logo {
     path {
         fill: rgb(100, 173, 40);
     }
 }
 
-#react-animate {
+#animate-react {
     width: 130px;
     top: -200px;
     left: calc(85% - 65px);
 }
 
-#react-animate,
+#animate-react,
 #react-logo {
     path {
         fill: rgb(93, 206, 235);
     }
 }
 
-#python-animate {
+#animate-python {
     width: 100px;
     top: 260px;
     left: calc(32% - 50px);
@@ -248,13 +271,13 @@ nav {
     fill: rgb(78, 104, 177);
 }
 
-#sass-animate {
+#animate-sass {
     width: 100px;
     top: 180px;
     left: calc(68% - 50px);
 }
 
-#sass-animate,
+#animate-sass,
 #sass-logo {
     path {
         fill: rgb(201, 42, 69);
@@ -262,45 +285,99 @@ nav {
 }
 
 #section3 {
-    height: 100vh;
-    background-color: #97afdf;
+    min-height: 100vh;
+    background-color: #000;
+    padding: 40px;
+    overflow: hidden;
+
+    h2 {
+        text-align: center;
+        margin: 60px 0 30px 0;
+    }
+}
+
+#skills-header {
+    margin: 16px 0 60px 40px;
+}
+
+#fundamentals {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 10vw;
+    text-align: center;
+    font-size: 1.6em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    span {
+        margin: 0 20px;
+        padding: 8px;
+        border: 2px solid #fff;
+    }
+}
+
+.skills-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 40px 10vw;
+}
+
+.skills-logo {
+    width: 100px;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    z-index: 4;
+    
+    svg {
+        height: 100px;
+    }
 }
 
 #js-logo {
-    width: 80px;
 
     path {
         fill: rgb(241, 227, 22);
     }
 }
 
-#node-logo,
-#python-logo {
-    width: 80px;
+#git-logo {
+
+    path {
+        fill: rgb(241, 91, 22);
+    }
 }
 
-#react-logo {
-    width: 94px;
+#docker-logo {
+
+    path {
+        fill: rgb(47, 137, 240);
+    }
 }
 
-#mdb-logo {
-    width: 42px;
-}
+#skills-more {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 10vw;
+    text-align: center;
+    font-size: 1em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
-#sass-logo {
-    width: 90px;
-}
-
-#psql-logo {
-    width: 74px;
+    span {
+        margin: 0 12px;
+        padding: 8px;
+        border: 2px solid #fff;
+    }
 }
 
 #section4 {
     height: 100vh;
-    background-color: #5599aa;
+    background-color: #333;
 }
 
 #section5 {
     height: 100vh;
-    background-color: #88ccff;
+    background-color: #000;
 }
