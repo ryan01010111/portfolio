@@ -12,7 +12,11 @@ a {
     color: #fff;
 }
 
-.hide {
+.hidden {
+    transform: scale(0);
+}
+
+.hide-nav {
     width: 0;
 }
 
@@ -21,7 +25,7 @@ a {
     position: fixed;
     top: 16px;
     right: 30px;
-    z-index: 10;
+    z-index: 11;
 
     div {
         width: 100%;
@@ -43,7 +47,8 @@ nav {
     color: #fff;
     border-left: 2px solid rgba(#555, 0.4);
     background-color: rgba(transparent, 0.4);
-    z-index: 4;
+    z-index: 10;
+    transition: all 1s ease;
     
     ul {
         flex: 1;
@@ -69,7 +74,7 @@ nav {
     top: 80px;
     right: 28px;
     font-size: 30px;
-    z-index: 10;
+    z-index: 5;
 }
 
 #section1 {
@@ -292,28 +297,12 @@ nav {
 
     h2 {
         text-align: center;
-        margin: 60px 0 30px 0;
+        margin: 30px 0;
     }
 }
 
 #skills-header {
     margin: 16px 0 60px 40px;
-}
-
-#fundamentals {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 10vw;
-    text-align: center;
-    font-size: 1.6em;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
-    span {
-        margin: 0 20px;
-        padding: 8px;
-        border: 2px solid #fff;
-    }
 }
 
 .skills-section {
@@ -356,6 +345,23 @@ nav {
     }
 }
 
+#fundamentals {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 80px 10vw 0 10vw;
+    text-align: center;
+    font-size: 1.6em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    span {
+        margin: 0 20px;
+        padding: 8px;
+        border: 2px solid #fff;
+        box-shadow: 0 0 8px #fff;
+    }
+}
+
 #skills-more {
     display: flex;
     justify-content: center;
@@ -373,8 +379,130 @@ nav {
 }
 
 #section4 {
-    height: 100vh;
-    background-color: #333;
+    height: 840px;
+    background: url('../images/space2.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    padding: 60px 10vw;
+}
+
+#works-header {
+    width: 100%;
+    text-align: left;
+}
+
+#portfolio {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 0 60px 0;
+    align-items: center;
+}
+
+.project-item {
+    width: 320px;
+    height: 160px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #000;
+    box-shadow: 0 4px 12px rgb(9, 219, 247);
+}
+
+.project-item:nth-child(2) {
+    position: absolute;
+    top: -360px;
+    left: calc(50% - 160px);
+}
+
+#portfolio-spacer {
+    width: 240px;
+}
+
+#planit-logo,
+#centerline-logo,
+#nochs-logo {
+    width: 80%;
+    filter: grayscale(100%);
+    transition: all 0.5s ease;
+
+    .project-item:hover & {
+        width: 90%;
+        filter: grayscale(0%);
+    }
+}
+
+#demo-container {
+    position: fixed;
+    top: 10vh;
+    left: 2%;
+    width: 96%;
+    height: 80vh;
+    display: flex;
+    z-index: 5;
+    border: 2px solid #555;
+}
+
+#close-demo-btn {
+    position: fixed;
+    bottom: calc(10vh + 20px);
+    left: calc(50% - 30px);
+    width: 70px;
+    padding: 8px 0;
+    color: rgb(9, 219, 247);
+    background-color: #555;
+    box-shadow: 0 2px 4px rgb(9, 219, 247);
+    outline: none;
+    border: none;
+    z-index: 5;
+}
+
+#demo-preview {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(#000, 0.6);
+
+    img {
+        width: 100%;
+    }
+}
+
+#demo-right {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+}
+
+#demo-devices {
+    width: 100%;
+    height: 30%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px;
+    background-color: #000;
+
+    img {
+        height: 100%;
+    }
+}
+
+#demo-description {
+    width: 100%;
+    height: 70%;
+    padding: 20px;
+    overflow-y: scroll;
 }
 
 #section5 {

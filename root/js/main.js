@@ -1,8 +1,59 @@
+// declarations
+const demoContainer = document.querySelector('#demo-container');
+const demoPreview = document.querySelector('#demo-preview');
+const demoDevices = document.querySelector('#demo-devices');
+
+// fetch demo media
+const planitGIF = new Image();
+const planitMobile = new Image();
+planitGIF.src = './images/Screenshot3.png';
+planitMobile.src = './images/Screenshot11.png';
+const clGIF = new Image();
+const clMobile = new Image();
+clGIF.src = './images/Screenshot4.png';
+clMobile.src = './images/Screenshot7.png';
+const nochsGIF = new Image();
+const nochsMobile = new Image();
+nochsGIF.src = './images/Screenshot1.png';
+nochsMobile.src = './images/Screenshot8.png';
+
 // event listeners
 document.querySelector('#nav-menu-btn').addEventListener('click', () => {
-    document.querySelector('nav').classList.toggle('hide');
+    document.querySelector('nav').classList.toggle('hide-nav');
 });
 
+document.querySelectorAll('.project-item').forEach(el => {
+    el.addEventListener('click', e => {
+        let gif;
+        let mobileImg;
+        switch (e.currentTarget.dataset.item) {
+            case 'cl':
+                gif = clGIF;
+                mobileImg = clMobile;
+                break;
+            case 'planit':
+                gif = planitGIF;
+                mobileImg = planitMobile;
+                break;
+            case 'nochs':
+                gif = nochsGIF;
+                mobileImg = nochsMobile;
+                break;
+            default:
+                gif = null;
+                mobileImg = null;
+        }
+        demoPreview.appendChild(gif);
+        demoDevices.appendChild(mobileImg);
+        demoContainer.classList.remove('hidden');
+    }
+)});
+
+document.querySelector('#close-demo-btn').addEventListener('click', () => {
+    demoPreview.innerHTML = null;
+    demoDevices.innerHTML = null;
+    demoContainer.classList.add('hidden');
+});
 
 // animations
 gsap.registerPlugin(ScrollTrigger);
@@ -104,8 +155,7 @@ const timeline2 = gsap.timeline({
         trigger: '#section3',
         start: 'top center',
         end: 'bottom center',
-        toggleActions: 'restart pause resume none',
-        markers: true
+        toggleActions: 'restart pause resume none'
     }
 });
 
@@ -115,3 +165,15 @@ timeline2
     .from('#mdb-logo', { duration: 2, opacity: 0, x: -150, y: -300 }, 0.6)
     .from('#sass-logo', { duration: 2, opacity: 0, x: 50, y: -420 }, 0.9)
     .from('#skills-header', { duration: 1, opacity: 0, x: -250 }, 1)
+
+const timeline3 = gsap.timeline({
+    scrollTrigger: {
+        trigger: '#section4',
+        start: 'top center',
+        end: 'bottom center',
+        toggleActions: 'play pause resume none'
+    }
+});
+
+timeline3
+    .from('.project-item', { duration: 2, stagger: 0.2, opacity: 0, y: -400, x: 200, ease: 'bounce' })
