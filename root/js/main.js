@@ -6,15 +6,15 @@ const demoDevices = document.querySelector('#demo-devices');
 // fetch demo media
 const planitGIF = new Image();
 const planitMobile = new Image();
-planitGIF.src = './images/Screenshot3.png';
+planitGIF.src = './images/planit-demo.gif';
 planitMobile.src = './images/Screenshot11.png';
 const clGIF = new Image();
 const clMobile = new Image();
-clGIF.src = './images/Screenshot4.png';
+clGIF.src = './images/cl-demo.gif';
 clMobile.src = './images/Screenshot7.png';
 const nochsGIF = new Image();
 const nochsMobile = new Image();
-nochsGIF.src = './images/Screenshot1.png';
+nochsGIF.src = './images/nochs-demo.gif';
 nochsMobile.src = './images/Screenshot8.png';
 
 // event listeners

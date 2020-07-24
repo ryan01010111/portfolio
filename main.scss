@@ -94,10 +94,10 @@ nav {
     text-align: left;
     display: flex;
     flex-direction: column;
-    font-size: 2em;
 
     h1 {
         padding: 12px 12px 20px 12px;
+        font-size: 3em;
     }
 }
 
@@ -452,7 +452,7 @@ nav {
 
 #close-demo-btn {
     position: fixed;
-    bottom: calc(10vh + 20px);
+    bottom: calc(10vh - 40px);
     left: calc(50% - 30px);
     width: 70px;
     padding: 8px 0;
@@ -473,6 +473,10 @@ nav {
 
     img {
         width: 100%;
+        border-top: 40px solid #efefef;
+        border-bottom: 12px solid #efefef;
+        border-left: 1px solid #efefef;
+        border-radius: 8px 8px 0 0;
     }
 }
 
