@@ -43,9 +43,13 @@ document.querySelectorAll('.project-item').forEach(el => {
                 gif = null;
                 mobileImg = null;
         }
-        demoPreview.appendChild(gif);
-        demoDevices.appendChild(mobileImg);
-        demoContainer.classList.remove('hidden');
+
+        if (gif && mobileImg) {
+            demoPreview.appendChild(gif);
+            demoDevices.appendChild(mobileImg);
+            demoContainer.classList.remove('hidden');
+            document.body.style.overflowY = 'hidden';
+        }
     }
 )});
 
@@ -53,6 +57,21 @@ document.querySelector('#close-demo-btn').addEventListener('click', () => {
     demoPreview.innerHTML = null;
     demoDevices.innerHTML = null;
     demoContainer.classList.add('hidden');
+    document.body.style.overflowY = 'scroll';
+});
+
+document.querySelector('#copyEmailBtn').addEventListener('click', () => {
+    navigator.permissions.query({name: "clipboard-write"}).then(result => {
+        if (result.state == "granted" || result.state == "prompt") {
+            navigator.clipboard.writeText('ryanwilliamsfb@gmail.com').then(function() {
+                /* clipboard successfully set */
+                alert('Copied email address.')
+            }, function() {
+                /* clipboard write failed */
+                alert('Sorry! Copying to your clipboard was unsuccessful.')
+            });
+        }
+    });
 });
 
 // animations
@@ -153,7 +172,7 @@ gsap.to('#animate-sass', {
 const timeline2 = gsap.timeline({
     scrollTrigger: {
         trigger: '#section3',
-        start: 'top center',
+        start: 'top 75%',
         end: 'bottom center',
         toggleActions: 'restart pause resume none'
     }

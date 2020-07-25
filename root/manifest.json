@@ -1,0 +1,8 @@
+{
+    "manifest_version": 1,
+    "name": "Ryan Williams Portfolio",
+    "permissions": [
+        "clipboardWrite"
+    ],
+    "version": "1.0"
+}

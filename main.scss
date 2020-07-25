@@ -1,3 +1,26 @@
+$light-blue: rgb(9, 219, 247);
+
+%header-glow {
+    padding: 12px 48px;
+    font-size: 1.2em;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-radius: 12px;
+    animation: header 3s infinite linear;
+}
+
+@keyframes header {
+    0% {
+        box-shadow: inset 0 0 16px 4px $light-blue;
+    }
+    50% {
+        box-shadow: none;
+    }
+    100% {
+        box-shadow: inset 0 0 16px 4px $light-blue;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,6 +28,7 @@
 body {
     color: #fff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #000;
 }
 
 a {
@@ -58,13 +82,24 @@ nav {
         justify-content: flex-end;
         align-items: center;
         margin: 140px 0 0 0;
-        padding: 0;
+        padding: 0 4px;
 
         li {
             width: 100%;
             margin: 8px 0;
-            padding: 0 24px;
+            padding: 0;
             font-size: 1.2em;
+            border-bottom: 2px solid rgba($light-blue, 0);
+            transition: all 1s ease;
+
+            &:hover {
+                border-bottom: 2px solid rgba($light-blue, 1);
+            }
+
+            a {
+                display: block;
+                padding: 8px 20px;
+            }
         }
     }
 }
@@ -78,7 +113,7 @@ nav {
 }
 
 #section1 {
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
     padding: 12px;
     position: relative;
@@ -119,7 +154,7 @@ nav {
 #welcome-msg span {
     position: absolute;
     opacity: 0;
-    background-color: #fff;
+    background-color: $light-blue;
 }
 
 #top1 {
@@ -292,24 +327,27 @@ nav {
 #section3 {
     min-height: 100vh;
     background-color: #000;
-    padding: 40px;
+    padding: 40px 10vw 80px 10vw;
     overflow: hidden;
 
     h2 {
         text-align: center;
-        margin: 30px 0;
+        font-size: 1.2em;
+        margin: 40px 0 30px 0;
     }
 }
 
 #skills-header {
-    margin: 16px 0 60px 40px;
+    @extend %header-glow;
+    display: inline-block;
+    margin: 20px 0 60px 0;
 }
 
 .skills-section {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 40px 10vw;
+    margin: 40px 0;
 }
 
 .skills-logo {
@@ -349,16 +387,21 @@ nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 80px 10vw 0 10vw;
+    margin: 80px 0 0 0;
     text-align: center;
     font-size: 1.6em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
     span {
         margin: 0 20px;
-        padding: 8px;
+        padding: 8px 12px;
         border: 2px solid #fff;
+        border-radius: 4px;
         box-shadow: 0 0 8px #fff;
+
+        &:hover {
+            box-shadow: 0 0 8px 2px $light-blue;
+        }
     }
 }
 
@@ -366,15 +409,19 @@ nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0 10vw;
     text-align: center;
     font-size: 1em;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
     span {
         margin: 0 12px;
-        padding: 8px;
+        padding: 8px 12px;
         border: 2px solid #fff;
+        border-radius: 4px;
+
+        &:hover {
+            box-shadow: 0 0 8px 2px $light-blue;
+        }
     }
 }
 
@@ -390,8 +437,8 @@ nav {
 }
 
 #works-header {
-    width: 100%;
-    text-align: left;
+    @extend %header-glow;
+    align-self: start;
 }
 
 #portfolio {
@@ -413,7 +460,7 @@ nav {
     align-items: center;
     padding: 20px;
     background-color: #000;
-    box-shadow: 0 4px 12px rgb(9, 219, 247);
+    box-shadow: 0 4px 12px $light-blue;
 }
 
 .project-item:nth-child(2) {
@@ -456,12 +503,17 @@ nav {
     left: calc(50% - 30px);
     width: 70px;
     padding: 8px 0;
-    color: rgb(9, 219, 247);
+    color: $light-blue;
     background-color: #555;
-    box-shadow: 0 2px 4px rgb(9, 219, 247);
+    box-shadow: 0 2px 4px $light-blue;
     outline: none;
     border: none;
+    border-radius: 4px;
     z-index: 5;
+
+    &:hover {
+        background-color: transparent;
+    }
 }
 
 #demo-preview {
@@ -507,9 +559,120 @@ nav {
     height: 70%;
     padding: 20px;
     overflow-y: scroll;
+
+    scrollbar-color: $light-blue #444;
+
+    &::-webkit-scrollbar {
+        width: 12px;
+        background-color: #000;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #444;
+        border-radius: 8px;
+        box-shadow: inset 0 0 6px $light-blue;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $light-blue;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-corner {
+        display: none;
+    }
 }
 
 #section5 {
-    height: 100vh;
+    min-height: 50vh;
     background-color: #000;
+    padding: 60px 10vw;
+}
+
+#contact-header {
+    text-align: center;
+    margin: 0 0 80px 0;
+}
+
+#about-msg {
+    margin: 24px 0;
+    padding: 20px;
+    border: 1px solid #fff;
+}
+
+#contact-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 0 40px 0;
+}
+
+#email-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px;
+    padding: 20px 32px;
+    background-color: #555;
+    border-radius: 12px;
+}
+
+#mailTo {
+    color: $light-blue;
+    margin: 12px 0;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+#copyEmailBtn {
+    margin: 20px 0 0 0;
+    padding: 4px 8px 8px 8px;
+    background-color: #fff;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: #444;
+        color: $light-blue;
+    }
+}
+
+.contact-item {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 20px 0;
+    text-align: center;
+    
+    a {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 12px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #555;
+        border-radius: 12px;
+
+        &:hover {
+            background-color: transparent;
+            border: 2px solid $light-blue;
+            border-radius: 100%;
+            
+            path {
+                fill: $light-blue;
+            }
+        }
+    }
+}
+
+footer {
+    padding: 12px;
+    text-align: center;
+    background-color: #333;
 }

@@ -1,3 +1,23 @@
+#works-header, #skills-header {
+  padding: 12px 48px;
+  font-size: 1.2em;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-radius: 12px;
+  animation: header 3s infinite linear;
+}
+
+@keyframes header {
+  0% {
+    box-shadow: inset 0 0 16px 4px #09dbf7;
+  }
+  50% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: inset 0 0 16px 4px #09dbf7;
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -5,6 +25,7 @@
 body {
   color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #000;
 }
 
 a {
@@ -56,13 +77,22 @@ nav ul {
   justify-content: flex-end;
   align-items: center;
   margin: 140px 0 0 0;
-  padding: 0;
+  padding: 0 4px;
 }
 nav ul li {
   width: 100%;
   margin: 8px 0;
-  padding: 0 24px;
+  padding: 0;
   font-size: 1.2em;
+  border-bottom: 2px solid rgba(9, 219, 247, 0);
+  transition: all 1s ease;
+}
+nav ul li:hover {
+  border-bottom: 2px solid #09dbf7;
+}
+nav ul li a {
+  display: block;
+  padding: 8px 20px;
 }
 
 #logo-main {
@@ -74,7 +104,7 @@ nav ul li {
 }
 
 #section1 {
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
   padding: 12px;
   position: relative;
@@ -114,7 +144,7 @@ nav ul li {
 #welcome-msg span {
   position: absolute;
   opacity: 0;
-  background-color: #fff;
+  background-color: #09dbf7;
 }
 
 #top1 {
@@ -280,23 +310,25 @@ nav ul li {
 #section3 {
   min-height: 100vh;
   background-color: #000;
-  padding: 40px;
+  padding: 40px 10vw 80px 10vw;
   overflow: hidden;
 }
 #section3 h2 {
   text-align: center;
-  margin: 30px 0;
+  font-size: 1.2em;
+  margin: 40px 0 30px 0;
 }
 
 #skills-header {
-  margin: 16px 0 60px 40px;
+  display: inline-block;
+  margin: 20px 0 60px 0;
 }
 
 .skills-section {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin: 40px 10vw;
+  margin: 40px 0;
 }
 
 .skills-logo {
@@ -326,31 +358,38 @@ nav ul li {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 80px 10vw 0 10vw;
+  margin: 80px 0 0 0;
   text-align: center;
   font-size: 1.6em;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 #fundamentals span {
   margin: 0 20px;
-  padding: 8px;
+  padding: 8px 12px;
   border: 2px solid #fff;
+  border-radius: 4px;
   box-shadow: 0 0 8px #fff;
+}
+#fundamentals span:hover {
+  box-shadow: 0 0 8px 2px #09dbf7;
 }
 
 #skills-more {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 10vw;
   text-align: center;
   font-size: 1em;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 #skills-more span {
   margin: 0 12px;
-  padding: 8px;
+  padding: 8px 12px;
   border: 2px solid #fff;
+  border-radius: 4px;
+}
+#skills-more span:hover {
+  box-shadow: 0 0 8px 2px #09dbf7;
 }
 
 #section4 {
@@ -365,8 +404,7 @@ nav ul li {
 }
 
 #works-header {
-  width: 100%;
-  text-align: left;
+  align-self: start;
 }
 
 #portfolio {
@@ -437,7 +475,11 @@ nav ul li {
   box-shadow: 0 2px 4px #09dbf7;
   outline: none;
   border: none;
+  border-radius: 4px;
   z-index: 5;
+}
+#close-demo-btn:hover {
+  background-color: transparent;
 }
 
 #demo-preview {
@@ -481,11 +523,112 @@ nav ul li {
   height: 70%;
   padding: 20px;
   overflow-y: scroll;
+  scrollbar-color: #09dbf7 #444;
+}
+#demo-description::-webkit-scrollbar {
+  width: 12px;
+  background-color: #000;
+}
+#demo-description::-webkit-scrollbar-track {
+  background-color: #444;
+  border-radius: 8px;
+  box-shadow: inset 0 0 6px #09dbf7;
+}
+#demo-description::-webkit-scrollbar-thumb {
+  background-color: #09dbf7;
+  border-radius: 8px;
+}
+#demo-description::-webkit-scrollbar-corner {
+  display: none;
 }
 
 #section5 {
-  height: 100vh;
+  min-height: 50vh;
   background-color: #000;
+  padding: 60px 10vw;
+}
+
+#contact-header {
+  text-align: center;
+  margin: 0 0 80px 0;
+}
+
+#about-msg {
+  margin: 24px 0;
+  padding: 20px;
+  border: 1px solid #fff;
+}
+
+#contact-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 0 40px 0;
+}
+
+#email-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12px;
+  padding: 20px 32px;
+  background-color: #555;
+  border-radius: 12px;
+}
+
+#mailTo {
+  color: #09dbf7;
+  margin: 12px 0;
+}
+#mailTo:hover {
+  opacity: 0.7;
+}
+
+#copyEmailBtn {
+  margin: 20px 0 0 0;
+  padding: 4px 8px 8px 8px;
+  background-color: #fff;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+}
+#copyEmailBtn:hover {
+  background-color: #444;
+  color: #09dbf7;
+}
+
+.contact-item {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  margin: 20px 0;
+  text-align: center;
+}
+.contact-item a {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 12px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #555;
+  border-radius: 12px;
+}
+.contact-item a:hover {
+  background-color: transparent;
+  border: 2px solid #09dbf7;
+  border-radius: 100%;
+}
+.contact-item a:hover path {
+  fill: #09dbf7;
+}
+
+footer {
+  padding: 12px;
+  text-align: center;
+  background-color: #333;
 }
 
 /*# sourceMappingURL=main.css.map */
