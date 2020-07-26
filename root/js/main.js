@@ -65,10 +65,10 @@ document.querySelector('#copyEmailBtn').addEventListener('click', () => {
         if (result.state == "granted" || result.state == "prompt") {
             navigator.clipboard.writeText('ryanwilliamsfb@gmail.com').then(function() {
                 /* clipboard successfully set */
-                alert('Copied email address.')
+                alert('Copied email address.');
             }, function() {
                 /* clipboard write failed */
-                alert('Sorry! Copying to your clipboard was unsuccessful.')
+                alert('Sorry! Copying to your clipboard was unsuccessful.');
             });
         }
     });
@@ -76,9 +76,9 @@ document.querySelector('#copyEmailBtn').addEventListener('click', () => {
 
 // animations
 gsap.registerPlugin(ScrollTrigger);
-const timeline = gsap.timeline();
 
-timeline
+const heroTL = gsap.timeline();
+heroTL
     .to('#top1', { duration: 0.4, opacity: 1, margin: 0, width: '100%' })
     .to('#top1', { duration: 0.5, opacity: 0 })
     .fromTo('#welcome-msg-1',
@@ -101,9 +101,22 @@ timeline
     .to('#right3', { duration: 0.4, opacity: 1, margin: 0, height: '100%' }, 2)
     .to('#right3', { duration: 0.5, opacity: 0 }, 2.4)
     .to('#bottom3', { duration: 0.4, opacity: 1, margin: 0, width: '100%' }, 2.4)
-    .fromTo('#welcome-msg-4',
-        { opacity: 0, y: -100 },
-        { duration: 1, opacity: 1, y: 0 }, 4)
+    .to('#learn-more, #arrow', { duration: 1.5, opacity: 1 }, 4)
+
+const orbitTL = gsap.timeline({ repeat: -1 });
+orbitTL
+    .fromTo('#satellite',
+        { x: 0, y: 0, scale: 1, zIndex: 4 },
+        { duration: 1.25, x: 300, y: 120, scale: 0.7, zIndex: 4, ease: 'power1.out' })
+    .fromTo('#satellite',
+        { x: 300, y: 120, scale: 0.7, zIndex: -1 },
+        { duration: 2, x: 0, y: 0, scale: 0.6, zIndex: -1, ease: 'sine.in' })
+    .fromTo('#satellite',
+        { x: 0, y: 0, scale: 0.6, zIndex: -1 },
+        { duration: 2, x: -300, y: -120, scale: 0.7, zIndex: -1, ease: 'sine.out' })
+    .fromTo('#satellite',
+        { x: -300, y: -120, scale: 0.7, zIndex: 4 },
+        { duration: 1.25, x: 0, y: 0, scale: 1, zIndex: 4, ease: 'power1.in' })
 
 const logoTrigger =  {
     trigger: '#section2',
@@ -169,7 +182,7 @@ gsap.to('#animate-sass', {
     ease: 'none'
 });
 
-const timeline2 = gsap.timeline({
+const skillsTL = gsap.timeline({
     scrollTrigger: {
         trigger: '#section3',
         start: 'top 75%',
@@ -178,14 +191,14 @@ const timeline2 = gsap.timeline({
     }
 });
 
-timeline2
+skillsTL
     .from('#js-logo', { duration: 2, opacity: 0, x: 250, y: -300 })
     .from('#react-logo', { duration: 2, opacity: 0, x: -50, y: -300 }, 0.3)
     .from('#mdb-logo', { duration: 2, opacity: 0, x: -150, y: -300 }, 0.6)
     .from('#sass-logo', { duration: 2, opacity: 0, x: 50, y: -420 }, 0.9)
     .from('#skills-header', { duration: 1, opacity: 0, x: -250 }, 1)
 
-const timeline3 = gsap.timeline({
+const portfolioTL = gsap.timeline({
     scrollTrigger: {
         trigger: '#section4',
         start: 'top center',
@@ -194,5 +207,5 @@ const timeline3 = gsap.timeline({
     }
 });
 
-timeline3
-    .from('.project-item', { duration: 2, stagger: 0.2, opacity: 0, y: -400, x: 200, ease: 'bounce' })
+portfolioTL
+    .from('.project-item', { duration: 2, stagger: 0.2, opacity: 0, y: -400, x: 200, ease: 'bounce' });
