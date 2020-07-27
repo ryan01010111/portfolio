@@ -2,20 +2,21 @@
 const demoContainer = document.querySelector('#demo-container');
 const demoPreview = document.querySelector('#demo-preview');
 const demoDevices = document.querySelector('#demo-devices');
+const repoLink = document.querySelector('#repo-link');
 
 // fetch demo media
 const planitGIF = new Image();
 const planitMobile = new Image();
 planitGIF.src = './images/planit-demo.gif';
-planitMobile.src = './images/Screenshot11.png';
+planitMobile.src = './images/planit-mobile.png';
 const clGIF = new Image();
 const clMobile = new Image();
 clGIF.src = './images/cl-demo.gif';
-clMobile.src = './images/Screenshot7.png';
+clMobile.src = './images/cl-mobile.png';
 const nochsGIF = new Image();
 const nochsMobile = new Image();
 nochsGIF.src = './images/nochs-demo.gif';
-nochsMobile.src = './images/Screenshot8.png';
+nochsMobile.src = './images/nochs-mobile.png';
 
 // event listeners
 document.querySelector('#nav-menu-btn').addEventListener('click', () => {
@@ -24,24 +25,29 @@ document.querySelector('#nav-menu-btn').addEventListener('click', () => {
 
 document.querySelectorAll('.project-item').forEach(el => {
     el.addEventListener('click', e => {
+        let selected = e.currentTarget.dataset.item;
         let gif;
         let mobileImg;
-        switch (e.currentTarget.dataset.item) {
+        switch (selected) {
             case 'cl':
                 gif = clGIF;
                 mobileImg = clMobile;
+                repoLink.href = 'https://github.com/ryan01010111/center-line';
                 break;
             case 'planit':
                 gif = planitGIF;
                 mobileImg = planitMobile;
+                repoLink.href = 'https://github.com/ryan01010111/planit';
                 break;
             case 'nochs':
                 gif = nochsGIF;
                 mobileImg = nochsMobile;
+                repoLink.href = 'https://github.com/ryan01010111/nochs';
                 break;
             default:
                 gif = null;
                 mobileImg = null;
+                repoLink.href = '';
         }
 
         if (gif && mobileImg) {

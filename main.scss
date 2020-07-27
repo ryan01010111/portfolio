@@ -130,7 +130,7 @@ nav {
     position: fixed;
     top: 80px;
     right: 28px;
-    font-size: 30px;
+    font-size: 28px;
     z-index: 5;
 }
 
@@ -565,17 +565,18 @@ nav {
 
 #demo-container {
     position: fixed;
-    top: 10vh;
-    left: 2%;
-    width: 96%;
-    height: 80vh;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(#000, 0.8);
     z-index: 5;
 }
 
 #close-demo-btn {
     position: fixed;
-    bottom: calc(10vh - 40px);
-    left: calc(50% - 30px);
+    bottom: 34px;
+    left: calc(50vw - 30px);
     width: 70px;
     padding: 8px 0;
     color: $light-blue;
@@ -592,8 +593,9 @@ nav {
 }
 
 #demo-inner {
-    width: 100%;
-    height: 100%;
+    width: 96vw;
+    height: calc(100vh - 150px);
+    margin: 60px 2vw 0 2vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -623,6 +625,8 @@ nav {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     background-color: #000;
 }
 
@@ -638,6 +642,18 @@ nav {
 
     img {
         height: 100%;
+    }
+}
+
+#repo-link {
+    margin: 0 0 20px 20px;
+    padding: 4px 8px;
+    align-self: flex-start;
+    color: $light-blue;
+    border: 1px solid $light-blue;
+
+    &:hover {
+        color: #fff;
     }
 }
 
@@ -798,115 +814,32 @@ footer {
         }
     }
 
-    // #demo-container {
-    //     position: fixed;
-    //     top: 10vh;
-    //     left: 2%;
-    //     width: 96%;
-    //     height: 80vh;
-    //     z-index: 5;
-    // }
-    
-    // #close-demo-btn {
-    //     position: fixed;
-    //     bottom: calc(10vh - 40px);
-    //     left: calc(50% - 30px);
-    //     width: 70px;
-    //     padding: 8px 0;
-    //     color: $light-blue;
-    //     background-color: #555;
-    //     box-shadow: 0 2px 4px $light-blue;
-    //     outline: none;
-    //     border: none;
-    //     border-radius: 4px;
-    //     z-index: 5;
-    
-    //     &:hover {
-    //         background-color: #000;
-    //     }
-    // }
-    
     #demo-inner {
-        // width: 100%;
-        // height: 100%;
-        // display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
-        // border: 2px solid #555;
-        // background-color: rgba(#000, 0.6);
     }
     
     #demo-preview {
         width: 100%;
         max-height: 70%;
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
-        // padding: 20px;
     
         img {
             max-width: 100%;
             height: 100%;
-        //     border-top: 40px solid #efefef;
-        //     border-bottom: 12px solid #efefef;
-        //     border-left: 1px solid #efefef;
-        //     border-radius: 8px 8px 0 0;
         }
     }
     
     #demo-right {
         width: calc(100% - 2px);
         min-height: 140px;
-        // display: flex;
-        // flex-direction: column;
-        // background-color: #000;
     }
     
     #demo-devices {
-        // width: 100%;
-        // height: 30%;
-        // position: relative;
-        // display: flex;
-        // justify-content: center;
-        // align-items: flex-end;
-        // padding: 20px;
-        // background-color: #000;
-    
-        // img {
-        //     height: 100%;
-        // }
+        display: none;
     }
     
-    // #demo-description {
-    //     width: 100%;
-    //     height: 70%;
-    //     padding: 20px;
-    //     overflow-y: scroll;
-    
-    //     scrollbar-color: $light-blue #444;
-    
-    //     &::-webkit-scrollbar {
-    //         width: 12px;
-    //         background-color: #000;
-    //     }
-    
-    //     &::-webkit-scrollbar-track {
-    //         background-color: #444;
-    //         border-radius: 8px;
-    //         box-shadow: inset 0 0 6px $light-blue;
-    //     }
-    
-    //     &::-webkit-scrollbar-thumb {
-    //         background-color: $light-blue;
-    //         border-radius: 8px;
-    //     }
-    
-    //     &::-webkit-scrollbar-corner {
-    //         display: none;
-    //     }
-    // }
+    #demo-description {
+        height: 100%;
+    }
 }
 
 @media screen and (max-width: 599px) {
@@ -930,5 +863,13 @@ footer {
     #section4,
     #section5 {
         padding: 60px 20px;
+    }
+
+    #demo-preview {
+    
+        img {
+            border-top: 24px solid #efefef;
+            border-bottom: 8px solid #efefef;
+        }
     }
 }
