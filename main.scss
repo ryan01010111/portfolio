@@ -1,4 +1,5 @@
 $light-blue: rgb(9, 219, 247);
+$font-secondary: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 %header-glow {
     padding: 12px 48px;
@@ -27,7 +28,7 @@ $light-blue: rgb(9, 219, 247);
 
 body {
     color: #fff;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #000;
 }
 
@@ -36,8 +37,65 @@ a {
     color: #fff;
 }
 
+.no-scroll {
+    overflow-y: hidden;
+}
+
 .hidden {
     transform: scale(0);
+}
+
+#welcome-window {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: transparent;
+    z-index: 15;
+}
+
+#panel-1,
+#panel-4 {
+    width: 40%;
+    height: 50%;
+    background-color: #222;
+}
+
+#panel-2,
+#panel-3 {
+    width: 60%;
+    height: 50%;
+    background-color: #222;
+}
+
+#greeting {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 40px 4vw;
+    text-align: center;
+
+    h2 {
+        text-align: left;
+        font-size: 1.8em;
+        font-weight: normal;
+        line-height: 1.8em;
+    }
+
+    h1 {
+        margin: 100px 0 40px 0;
+        font-family: $font-secondary;
+        font-size: 2.4em;
+    }
+
+    p {
+        font-family: $font-secondary;
+        font-size: 1.2em;
+    }
 }
 
 .hide-nav {
@@ -108,7 +166,7 @@ nav {
     }
 }
 
-#lang-btns{
+.lang-btns {
     margin: 40px 0;
 
     button {
@@ -148,7 +206,7 @@ nav {
     z-index: 3;
 }
 
-#welcome-msg {
+#hero-msg {
     height: 300px;
     margin: 80px 0;
     position: relative;
@@ -160,20 +218,20 @@ nav {
         padding: 12px 12px 20px 12px;
         font-size: 3em;
     }
+
+    span {
+        position: absolute;
+        opacity: 0;
+        background-color: $light-blue;
+    }
 }
 
-#welcome-msg-1,
-#welcome-msg-2,
-#welcome-msg-3 {
+#hero-msg-1,
+#hero-msg-2,
+#hero-msg-3 {
     position: relative;
     margin: 0;
     z-index: 3;
-}
-
-#welcome-msg span {
-    position: absolute;
-    opacity: 0;
-    background-color: $light-blue;
 }
 
 #top1 {
@@ -463,7 +521,7 @@ nav {
     flex-wrap: wrap;
     margin: 80px 0 0 0;
     text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: $font-secondary;
 
     span {
         margin: 0 20px;
@@ -485,7 +543,7 @@ nav {
     flex-wrap: wrap;
     text-align: center;
     font-size: 1em;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: $font-secondary;
 
     span {
         margin: 0 12px;
