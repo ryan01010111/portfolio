@@ -2,15 +2,11 @@
 const demoContainer = document.querySelector('#demo-container');
 const demoPreview = document.querySelector('#demo-preview');
 const demoDevices = document.querySelector('#demo-devices');
+const demoInfo = document.querySelector('#demo-info');
+const planitInfo = document.querySelector('#planit-info');
+const clInfo = document.querySelector('#cl-info');
+const nochsInfo = document.querySelector('#planit-info');
 const repoLink = document.querySelector('#repo-link');
-
-// enable/disable body scroll
-const lockBody = () => {
-    document.body.classList.add('no-scroll');
-};
-const unlockBody = () => {
-    document.body.classList.remove('no-scroll');
-};
 
 // fetch demo media
 const planitGIF = new Image();
@@ -26,16 +22,33 @@ const nochsMobile = new Image();
 nochsGIF.src = './images/nochs-demo.gif';
 nochsMobile.src = './images/nochs-mobile.png';
 
+// enable/disable body scroll
+const lockBody = () => {
+    document.body.classList.add('no-scroll');
+};
+const unlockBody = () => {
+    document.body.classList.remove('no-scroll');
+};
+
+//toggle navbar
+const toggleNav = () => {
+    document.querySelector('nav').classList.toggle('hide-nav');
+    document.querySelector('#overlay').classList.toggle('hidden');
+}
+
 // event listeners
-document.querySelector('#greeting').addEventListener('click', () => {
+document.querySelector('#greeting-container').addEventListener('click', () => {
     welcomeTL.play();
     orbitTL.play();
     heroTL.play();
     unlockBody();
+    document.querySelector('#welcome-window').classList.add('click-thru');
 });
 
-document.querySelector('#nav-menu-btn').addEventListener('click', () => {
-    document.querySelector('nav').classList.toggle('hide-nav');
+[document.querySelector('#nav-menu-btn'), document.querySelector('#overlay'), document.querySelector('#nav-ul')].forEach(el => {
+    el.addEventListener('click', () => {
+        toggleNav();
+    })
 });
 
 document.querySelectorAll('.project-item').forEach(el => {
@@ -43,21 +56,25 @@ document.querySelectorAll('.project-item').forEach(el => {
         let selected = e.currentTarget.dataset.item;
         let gif;
         let mobileImg;
+        let info;
         switch (selected) {
             case 'cl':
                 gif = clGIF;
                 mobileImg = clMobile;
                 repoLink.href = 'https://github.com/ryan01010111/center-line';
+                info = clInfo;
                 break;
             case 'planit':
                 gif = planitGIF;
                 mobileImg = planitMobile;
                 repoLink.href = 'https://github.com/ryan01010111/planit';
+                info = planitInfo;
                 break;
             case 'nochs':
                 gif = nochsGIF;
                 mobileImg = nochsMobile;
                 repoLink.href = 'https://github.com/ryan01010111/nochs';
+                info = nochsInfo;
                 break;
             default:
                 gif = null;
@@ -68,6 +85,7 @@ document.querySelectorAll('.project-item').forEach(el => {
         if (gif && mobileImg) {
             demoPreview.appendChild(gif);
             demoDevices.appendChild(mobileImg);
+            demoInfo.appendChild(info);
             demoContainer.classList.remove('hidden');
             lockBody();
         }
@@ -77,6 +95,7 @@ document.querySelectorAll('.project-item').forEach(el => {
 document.querySelector('#close-demo-btn').addEventListener('click', () => {
     demoPreview.innerHTML = null;
     demoDevices.innerHTML = null;
+    demoInfo.innerHTML = null;
     demoContainer.classList.add('hidden');
     unlockBody();
 });
@@ -100,7 +119,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const welcomeTL = gsap.timeline({ paused: true });
 welcomeTL
-    .to('#greeting', { duration: 1, opacity: 0 })
+    .to('#greeting-container', { duration: 1, opacity: 0 })
     .to('#panel-1', { duration: 2, x: '-52vw' }, 0)
     .to('#panel-2', { duration: 2, y: '-52vh' }, 0)
     .to('#panel-3', { duration: 2, y: '52vh' }, 0)

@@ -26,9 +26,13 @@ $font-secondary: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida 
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    color: #fff;
     font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff;
     background-color: #000;
 }
 
@@ -43,6 +47,10 @@ a {
 
 .hidden {
     transform: scale(0);
+}
+
+.click-thru {
+    pointer-events: none;
 }
 
 #welcome-window {
@@ -71,23 +79,44 @@ a {
     background-color: #222;
 }
 
-#greeting {
+#greeting-container {
     position: absolute;
     width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     padding: 40px 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
     text-align: center;
 
     h2 {
+        align-self: start;
+        margin: 60px 0 20px 0;
+        padding: 0 0 0 12px;
         text-align: left;
         font-size: 1.8em;
         font-weight: normal;
         line-height: 1.8em;
+        border-left: 4px solid $light-blue;
     }
+}
 
+#logo-greeting {
+    width: 60px;
+}
+
+#greeting-msg {
+    display: inline-block;
+    margin: 40px 0;
+    padding: 30px 60px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px 1px $light-blue;
+
+    
     h1 {
-        margin: 100px 0 40px 0;
         font-family: $font-secondary;
         font-size: 2.4em;
     }
@@ -96,6 +125,15 @@ a {
         font-family: $font-secondary;
         font-size: 1.2em;
     }
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
 }
 
 .hide-nav {
@@ -108,6 +146,7 @@ a {
     top: 16px;
     right: 30px;
     z-index: 11;
+    cursor: pointer;
 
     div {
         width: 100%;
@@ -135,33 +174,33 @@ nav {
     background-color: #000;
     z-index: 10;
     transition: all 1s ease;
-    
-    ul {
+}
+
+#nav-ul {
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 140px 0 0 0;
+    padding: 0 4px;
+
+    li {
         width: 100%;
-        list-style-type: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        align-items: center;
-        margin: 140px 0 0 0;
-        padding: 0 4px;
+        margin: 8px 0;
+        padding: 0;
+        font-size: 1.2em;
+        border-bottom: 2px solid rgba($light-blue, 0);
+        transition: all 1s ease;
 
-        li {
-            width: 100%;
-            margin: 8px 0;
-            padding: 0;
-            font-size: 1.2em;
-            border-bottom: 2px solid rgba($light-blue, 0);
-            transition: all 1s ease;
+        &:hover {
+            border-bottom: 2px solid rgba($light-blue, 1);
+        }
 
-            &:hover {
-                border-bottom: 2px solid rgba($light-blue, 1);
-            }
-
-            a {
-                display: block;
-                padding: 8px 20px;
-            }
+        a {
+            display: block;
+            padding: 8px 20px;
         }
     }
 }
@@ -187,9 +226,14 @@ nav {
 #logo-main {
     position: fixed;
     top: 80px;
-    right: 28px;
-    font-size: 28px;
+    right: 25px;
+    padding: 2px;
+    background-color: rgba(#000, 0.4);
     z-index: 5;
+
+    img {
+        width: 44px;
+    }
 }
 
 #section1 {
@@ -572,6 +616,7 @@ nav {
 #works-header {
     @extend %header-glow;
     align-self: start;
+    margin: 16px 0;
 }
 
 #portfolio {
@@ -715,13 +760,13 @@ nav {
     }
 }
 
-#demo-description {
+#demo-info {
     width: 100%;
     height: 70%;
     margin: 0 0 24px 0;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
+    box-shadow: inset 0 0 12px #555;
     overflow-y: scroll;
-
     scrollbar-color: $light-blue #444;
 
     &::-webkit-scrollbar {
@@ -742,6 +787,18 @@ nav {
 
     &::-webkit-scrollbar-corner {
         display: none;
+    }
+
+    h3 {
+        color: $light-blue;
+    }
+
+    span {
+        padding: 4px 8px;
+        border: 1px solid #fff;
+        border-radius: 4px;
+        line-height: 38px;
+        white-space: nowrap;
     }
 }
 
@@ -854,6 +911,13 @@ footer {
 }
 
 @media screen and (max-width: 899px) {
+    #greeting-container {
+
+        h2 {
+            font-size: 1.4em;
+        }
+    }
+
     #fundamentals {
     
         span {
@@ -895,12 +959,23 @@ footer {
         display: none;
     }
     
-    #demo-description {
+    #demo-info {
         height: 100%;
     }
 }
 
 @media screen and (max-width: 599px) {
+    #greeting-msg {
+
+        h1{
+            font-size: 2em;
+        }
+
+        p{
+            font-size: 1em;
+        }
+    }
+
     #section3 {
         padding: 40px 20px 80px 20px;
     }
@@ -929,5 +1004,23 @@ footer {
             border-top: 24px solid #efefef;
             border-bottom: 8px solid #efefef;
         }
+    }
+}
+
+@media screen and (max-width: 379px) {
+    #section4 {
+        height: auto;
+        justify-content: start;
+    }
+
+    .project-item {
+        width: 100%;
+        height: calc((100vw - 40px) / 2);
+    }
+}
+
+@media screen and (max-height: 599px) {
+    #greeting-container {
+        overflow-y: scroll;
     }
 }
