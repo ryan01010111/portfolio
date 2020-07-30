@@ -629,7 +629,7 @@ nav {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 5;
+  z-index: 12;
 }
 
 #close-demo-btn {
@@ -656,7 +656,7 @@ nav {
   margin: 60px 2vw 0 2vw;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: 2px solid #555;
   background-color: rgba(0, 0, 0, 0.6);
@@ -702,9 +702,9 @@ nav {
 }
 
 #repo-link {
-  margin: 0 0 20px 20px;
+  margin: 0 0 20px 0;
   padding: 4px 8px;
-  align-self: flex-start;
+  align-self: center;
   color: #09dbf7;
   border: 1px solid #09dbf7;
 }
@@ -869,30 +869,42 @@ footer {
     margin: 4px 12px;
   }
 
+  #close-demo-btn {
+    bottom: 74px;
+  }
+
   #demo-inner {
+    height: calc(100vh - 102px);
+    margin: 12px 2vw 0 2vw;
     flex-direction: column;
   }
-
+}
+@media screen and (max-width: 899px) and (orientation: portrait) {
   #demo-preview {
     width: 100%;
-    max-height: 70%;
   }
-  #demo-preview img {
-    max-width: 100%;
-    height: 100%;
-  }
-
+}
+@media screen and (max-width: 899px) {
   #demo-right {
     width: calc(100% - 2px);
-    min-height: 140px;
+    flex: 1 0 170px;
+    overflow: hidden;
   }
-
+}
+@media screen and (max-width: 899px) {
   #demo-devices {
     display: none;
   }
-
+}
+@media screen and (max-width: 899px) {
   #demo-info {
-    height: 100%;
+    flex: 1;
+  }
+}
+@media screen and (max-width: 899px) {
+  #repo-link {
+    margin: 0 20px 20px 0;
+    align-self: flex-end;
   }
 }
 @media screen and (max-width: 599px) {
