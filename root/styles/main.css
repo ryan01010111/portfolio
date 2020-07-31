@@ -41,8 +41,12 @@ a {
   overflow-y: hidden;
 }
 
-.hidden {
+.scale-0 {
   transform: scale(0);
+}
+
+.no-display {
+  display: none;
 }
 
 .click-thru {
@@ -246,7 +250,7 @@ nav {
   padding: 12px 12px 20px 12px;
   font-size: 3em;
 }
-#hero-msg span {
+#hero-msg h1 div {
   position: absolute;
   opacity: 0;
   background-color: #09dbf7;
@@ -473,7 +477,7 @@ nav {
 #section3 h2 {
   text-align: center;
   font-size: 1.2em;
-  margin: 40px 0 30px 0;
+  margin: 40px 40px 30px 40px;
 }
 
 #skills-header {
@@ -635,9 +639,9 @@ nav {
 #close-demo-btn {
   position: fixed;
   bottom: 34px;
-  left: calc(50vw - 30px);
-  width: 70px;
-  padding: 8px 0;
+  left: 50vw;
+  transform: translateX(-50%);
+  padding: 8px 18px;
   color: #09dbf7;
   background-color: #555;
   box-shadow: 0 2px 4px #09dbf7;
@@ -669,11 +673,12 @@ nav {
   align-items: center;
   padding: 20px;
 }
-#demo-preview img {
+#demo-preview video {
   width: 100%;
   border-top: 40px solid #efefef;
   border-bottom: 12px solid #efefef;
   border-left: 1px solid #efefef;
+  border-right: 1px solid #efefef;
   border-radius: 8px 8px 0 0;
 }
 
@@ -763,6 +768,14 @@ nav {
   margin: 24px 0;
   padding: 20px;
   border: 1px solid #fff;
+  line-height: 2em;
+}
+
+#style-h {
+  color: #09dbf7;
+  font-size: 1.4em;
+  font-weight: bold;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 #contact-container {
@@ -937,7 +950,7 @@ footer {
     padding: 60px 20px;
   }
 
-  #demo-preview img {
+  #demo-preview video {
     border-top: 24px solid #efefef;
     border-bottom: 8px solid #efefef;
   }
@@ -956,6 +969,11 @@ footer {
 @media screen and (max-height: 599px) {
   #greeting-container {
     overflow-y: scroll;
+  }
+}
+@media screen and (max-height: 599px) and (orientation: landscape) {
+  #demo-preview {
+    display: none;
   }
 }
 

@@ -45,8 +45,13 @@ a {
     overflow-y: hidden;
 }
 
-.hidden {
+.scale-0 {
     transform: scale(0);
+}
+
+
+.no-display {
+    display: none;
 }
 
 .click-thru {
@@ -261,12 +266,12 @@ nav {
     h1 {
         padding: 12px 12px 20px 12px;
         font-size: 3em;
-    }
 
-    span {
-        position: absolute;
-        opacity: 0;
-        background-color: $light-blue;
+        div {
+            position: absolute;
+            opacity: 0;
+            background-color: $light-blue;
+        }
     }
 }
 
@@ -501,7 +506,7 @@ nav {
     h2 {
         text-align: center;
         font-size: 1.2em;
-        margin: 40px 0 30px 0;
+        margin: 40px 40px 30px 40px;
     }
 }
 
@@ -679,9 +684,9 @@ nav {
 #close-demo-btn {
     position: fixed;
     bottom: 34px;
-    left: calc(50vw - 30px);
-    width: 70px;
-    padding: 8px 0;
+    left: 50vw;
+    transform: translateX(-50%);
+    padding: 8px 18px;
     color: $light-blue;
     background-color: #555;
     box-shadow: 0 2px 4px $light-blue;
@@ -714,11 +719,12 @@ nav {
     align-items: center;
     padding: 20px;
 
-    img {
+    video {
         width: 100%;
         border-top: 40px solid #efefef;
         border-bottom: 12px solid #efefef;
         border-left: 1px solid #efefef;
+        border-right: 1px solid #efefef;
         border-radius: 8px 8px 0 0;
     }
 }
@@ -817,6 +823,14 @@ nav {
     margin: 24px 0;
     padding: 20px;
     border: 1px solid #fff;
+    line-height: 2em;
+}
+
+#style-h {
+    color: $light-blue;
+    font-size: 1.4em;
+    font-weight: bold;
+    font-family: $font-secondary;
 }
 
 #contact-container {
@@ -1008,7 +1022,7 @@ footer {
 
     #demo-preview {
     
-        img {
+        video {
             border-top: 24px solid #efefef;
             border-bottom: 8px solid #efefef;
         }
@@ -1030,5 +1044,11 @@ footer {
 @media screen and (max-height: 599px) {
     #greeting-container {
         overflow-y: scroll;
+    }
+
+    @media (orientation: landscape) {
+        #demo-preview {
+            display: none;
+        }
     }
 }

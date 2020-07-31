@@ -1,25 +1,36 @@
+// prevent auto-scroll on refresh
+history.scrollRestoration = "manual";
+
 // declarations
+const langGroupEN = document.querySelectorAll('.lang-en');
+const langGroupRU = document.querySelectorAll('.lang-ru');
 const demoContainer = document.querySelector('#demo-container');
 const demoPreview = document.querySelector('#demo-preview');
 const demoDevices = document.querySelector('#demo-devices');
 const demoInfo = document.querySelector('#demo-info');
 const planitInfo = document.querySelector('#planit-info');
 const clInfo = document.querySelector('#cl-info');
-const nochsInfo = document.querySelector('#planit-info');
+const nochsInfo = document.querySelector('#nochs-info');
 const repoLink = document.querySelector('#repo-link');
 
 // fetch demo media
-const planitGIF = new Image();
+const configVid = (el, src) => {
+    el.src = src;
+    el.setAttribute('loop', '');
+    el.setAttribute('muted', '');
+    el.setAttribute('playsinline', '');
+}
+const planitVid = document.createElement('video');
+configVid(planitVid, './images/planit-demo.mp4');
 const planitMobile = new Image();
-planitGIF.src = './images/planit-demo.gif';
 planitMobile.src = './images/planit-mobile.png';
-const clGIF = new Image();
+const clVid = document.createElement('video');
+configVid(clVid, './images/cl-demo.mp4');
 const clMobile = new Image();
-clGIF.src = './images/cl-demo.gif';
 clMobile.src = './images/cl-mobile.png';
-const nochsGIF = new Image();
+const nochsVid = document.createElement('video');
+configVid(nochsVid, './images/nochs-demo.mp4');
 const nochsMobile = new Image();
-nochsGIF.src = './images/nochs-demo.gif';
 nochsMobile.src = './images/nochs-mobile.png';
 
 // enable/disable body scroll
@@ -33,16 +44,40 @@ const unlockBody = () => {
 //toggle navbar
 const toggleNav = () => {
     document.querySelector('nav').classList.toggle('hide-nav');
-    document.querySelector('#overlay').classList.toggle('hidden');
+    document.querySelector('#overlay').classList.toggle('scale-0');
 }
 
 // event listeners
-document.querySelector('#greeting-container').addEventListener('click', () => {
-    welcomeTL.play();
-    orbitTL.play();
-    heroTL.play();
-    unlockBody();
-    document.querySelector('#welcome-window').classList.add('click-thru');
+document.querySelectorAll('.lang-btn-en').forEach(btn => {
+    btn.addEventListener('click', () => {
+        langGroupRU.forEach(item => {
+            item.classList.add('no-display');
+        });
+        langGroupEN.forEach(item => {
+            item.classList.remove('no-display');
+        });
+    });
+});
+
+document.querySelectorAll('.lang-btn-ru').forEach(btn => {
+    btn.addEventListener('click', () => {
+        langGroupEN.forEach(item => {
+            item.classList.add('no-display');
+        });
+        langGroupRU.forEach(item => {
+            item.classList.remove('no-display');
+        });
+    });
+});
+
+document.querySelector('#lang-btns-start').addEventListener('click', e => {
+    if (e.target.tagName === 'BUTTON') {
+        welcomeTL.play();
+        orbitTL.play();
+        heroTL.play();
+        unlockBody();
+        document.querySelector('#welcome-window').classList.add('click-thru');
+    }
 });
 
 [document.querySelector('#nav-menu-btn'), document.querySelector('#overlay'), document.querySelector('#nav-ul')].forEach(el => {
@@ -59,19 +94,19 @@ document.querySelectorAll('.project-item').forEach(el => {
         let info;
         switch (selected) {
             case 'cl':
-                gif = clGIF;
+                gif = clVid;
                 mobileImg = clMobile;
                 repoLink.href = 'https://github.com/ryan01010111/center-line';
                 info = clInfo;
                 break;
             case 'planit':
-                gif = planitGIF;
+                gif = planitVid;
                 mobileImg = planitMobile;
                 repoLink.href = 'https://github.com/ryan01010111/planit';
                 info = planitInfo;
                 break;
             case 'nochs':
-                gif = nochsGIF;
+                gif = nochsVid;
                 mobileImg = nochsMobile;
                 repoLink.href = 'https://github.com/ryan01010111/nochs';
                 info = nochsInfo;
@@ -86,8 +121,9 @@ document.querySelectorAll('.project-item').forEach(el => {
             demoPreview.appendChild(gif);
             demoDevices.appendChild(mobileImg);
             demoInfo.appendChild(info);
-            demoContainer.classList.remove('hidden');
+            demoContainer.classList.remove('scale-0');
             lockBody();
+            gif.play();
         }
     }
 )});
@@ -96,7 +132,7 @@ document.querySelector('#close-demo-btn').addEventListener('click', () => {
     demoPreview.innerHTML = null;
     demoDevices.innerHTML = null;
     demoInfo.innerHTML = null;
-    demoContainer.classList.add('hidden');
+    demoContainer.classList.add('scale-0');
     unlockBody();
 });
 
