@@ -21,15 +21,15 @@ const configVid = (el, src) => {
     el.setAttribute('playsinline', '');
 }
 const planitVid = document.createElement('video');
-configVid(planitVid, './images/planit-demo.mp4');
+configVid(planitVid, './media/planit-demo.mp4');
 const planitMobile = new Image();
 planitMobile.src = './images/planit-mobile.png';
 const clVid = document.createElement('video');
-configVid(clVid, './images/cl-demo.mp4');
+configVid(clVid, './media/cl-demo.mp4');
 const clMobile = new Image();
 clMobile.src = './images/cl-mobile.png';
 const nochsVid = document.createElement('video');
-configVid(nochsVid, './images/nochs-demo.mp4');
+configVid(nochsVid, './media/nochs-demo.mp4');
 const nochsMobile = new Image();
 nochsMobile.src = './images/nochs-mobile.png';
 
@@ -89,41 +89,41 @@ document.querySelector('#lang-btns-start').addEventListener('click', e => {
 document.querySelectorAll('.project-item').forEach(el => {
     el.addEventListener('click', e => {
         let selected = e.currentTarget.dataset.item;
-        let gif;
+        let vid;
         let mobileImg;
         let info;
         switch (selected) {
             case 'cl':
-                gif = clVid;
+                vid = clVid;
                 mobileImg = clMobile;
                 repoLink.href = 'https://github.com/ryan01010111/center-line';
                 info = clInfo;
                 break;
             case 'planit':
-                gif = planitVid;
+                vid = planitVid;
                 mobileImg = planitMobile;
                 repoLink.href = 'https://github.com/ryan01010111/planit';
                 info = planitInfo;
                 break;
             case 'nochs':
-                gif = nochsVid;
+                vid = nochsVid;
                 mobileImg = nochsMobile;
                 repoLink.href = 'https://github.com/ryan01010111/nochs';
                 info = nochsInfo;
                 break;
             default:
-                gif = null;
+                vid = null;
                 mobileImg = null;
                 repoLink.href = '';
         }
 
-        if (gif && mobileImg) {
-            demoPreview.appendChild(gif);
+        if (vid && mobileImg) {
+            demoPreview.appendChild(vid);
             demoDevices.appendChild(mobileImg);
             demoInfo.appendChild(info);
             demoContainer.classList.remove('scale-0');
             lockBody();
-            gif.play();
+            vid.play();
         }
     }
 )});
