@@ -326,11 +326,58 @@ nav {
     margin-right: 100%;
 }
 
+#learn-more-container {
+    position: fixed;
+    bottom: 0;
+    left: calc(50% - 41px);
+    opacity: 1;
+    z-index: 4;
+}
+
 
 #learn-more {
+    text-align: center;
     font-size: 1.2em;
     font-weight: normal;
-    opacity: 0;
+}
+
+@keyframes scroll {
+    from {
+        top: 4px;
+    }
+    to {
+        top: 12px;
+    }
+}
+
+#scroll-indicator {
+    width: 24px;
+    height: 40px;
+    position: relative;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        padding: 10px 4px;
+        top: 4px;
+        left: 8px;
+        border-radius: 12px;
+        background-color: #000;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        padding: 6px 4px;
+        top: 4px;
+        left: 8px;
+        border-radius: 12px;
+        background-color: $light-blue;
+        animation: scroll 1s infinite ease;
+    }
 }
 
 #arrow {
@@ -338,7 +385,6 @@ nav {
     height: 10px;
     position: relative;
     margin: 30px 0;
-    opacity: 0;
 
     &::before {
         content: '';
@@ -580,10 +626,6 @@ nav {
         border: 2px solid #fff;
         border-radius: 4px;
         box-shadow: 0 0 8px #fff;
-
-        &:hover {
-            box-shadow: 0 0 8px 2px $light-blue;
-        }
     }
 }
 
@@ -601,10 +643,6 @@ nav {
         white-space: nowrap;
         border: 2px solid #fff;
         border-radius: 4px;
-
-        &:hover {
-            box-shadow: 0 0 8px 2px $light-blue;
-        }
     }
 }
 
@@ -647,6 +685,10 @@ nav {
     padding: 20px;
     background-color: #000;
     box-shadow: 0 4px 12px $light-blue;
+    
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .project-item:nth-child(2) {
@@ -698,6 +740,10 @@ nav {
 
     &:hover {
         background-color: #000;
+    }
+
+    span {
+        pointer-events: none;
     }
 }
 
@@ -869,6 +915,7 @@ nav {
     border-radius: 4px;
 
     &:hover {
+        cursor: pointer;
         background-color: #444;
         color: $light-blue;
     }
@@ -999,6 +1046,11 @@ footer {
         }
     }
 
+    #learn-more-container {
+        transform: scale(0.7);
+        bottom: -30px;
+    }
+
     #section3 {
         padding: 40px 20px 80px 20px;
     }
@@ -1047,7 +1099,25 @@ footer {
         overflow-y: scroll;
     }
 
+    #hero-msg {
+        height: 220px;
+        margin: 40px 0;
+
+        h1 {
+            font-size: 2em;
+        }
+    }
+
     @media (orientation: landscape) {
+        #hero-msg {
+            margin: 20px 0;
+        }
+        
+        #learn-more-container {
+            position: static;
+            margin: 50px 0 0 0;
+        }
+
         #demo-preview {
             display: none;
         }

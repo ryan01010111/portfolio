@@ -4,6 +4,7 @@ history.scrollRestoration = "manual";
 // declarations
 const langGroupEN = document.querySelectorAll('.lang-en');
 const langGroupRU = document.querySelectorAll('.lang-ru');
+const overlay = document.querySelector('#overlay');
 const demoContainer = document.querySelector('#demo-container');
 const demoPreview = document.querySelector('#demo-preview');
 const demoDevices = document.querySelector('#demo-devices');
@@ -44,7 +45,7 @@ const unlockBody = () => {
 //toggle navbar
 const toggleNav = () => {
     document.querySelector('nav').classList.toggle('hide-nav');
-    document.querySelector('#overlay').classList.toggle('scale-0');
+    overlay.classList.toggle('scale-0');
 }
 
 // event listeners
@@ -80,7 +81,7 @@ document.querySelector('#lang-btns-start').addEventListener('click', e => {
     }
 });
 
-[document.querySelector('#nav-menu-btn'), document.querySelector('#overlay'), document.querySelector('#nav-ul')].forEach(el => {
+[document.querySelector('#nav-menu-btn'), overlay, document.querySelector('#nav-ul')].forEach(el => {
     el.addEventListener('click', () => {
         toggleNav();
     })
@@ -122,18 +123,20 @@ document.querySelectorAll('.project-item').forEach(el => {
             demoDevices.appendChild(mobileImg);
             demoInfo.appendChild(info);
             demoContainer.classList.remove('scale-0');
-            lockBody();
             vid.play();
+            lockBody();
         }
     }
 )});
 
-document.querySelector('#close-demo-btn').addEventListener('click', () => {
-    demoPreview.innerHTML = null;
-    demoDevices.innerHTML = null;
-    demoInfo.innerHTML = null;
-    demoContainer.classList.add('scale-0');
-    unlockBody();
+demoContainer.addEventListener('click', e => {
+    if (['demo-container', 'close-demo-btn'].includes(e.target.id)) {
+        demoPreview.innerHTML = null;
+        demoDevices.innerHTML = null;
+        demoInfo.innerHTML = null;
+        demoContainer.classList.add('scale-0');
+        unlockBody();
+    }
 });
 
 document.querySelector('#copyEmailBtn').addEventListener('click', () => {
@@ -162,6 +165,18 @@ welcomeTL
     .to('#panel-4', { duration: 2, x: '52vw' }, 0)
     .to('#welcome-window', { duration: 0, opacity: 0, scale: 0 }, 2);
 
+const cueScrollFade = () => {
+    gsap.to('#learn-more-container', {
+        scrollTrigger: {
+            trigger: '#section2',
+            start: 'top 80%',
+            end: 'top 40%',
+            scrub: true
+        },
+        opacity: 0
+    });
+}
+
 const heroTL = gsap.timeline({ paused: true, delay: 0.75 });
 heroTL
     .to('#top1', { duration: 0.4, opacity: 1, margin: 0, width: '100%' })
@@ -186,7 +201,8 @@ heroTL
     .to('#right3', { duration: 0.4, opacity: 1, margin: 0, height: '100%' }, 2)
     .to('#right3', { duration: 0.5, opacity: 0 }, 2.4)
     .to('#bottom3', { duration: 0.4, opacity: 1, margin: 0, width: '100%' }, 2.4)
-    .to('#learn-more, #arrow', { duration: 1.5, opacity: 1 }, 4)
+    .from('#learn-more-container', { duration: 1.5, opacity: 0 }, 4)
+    .call(cueScrollFade, [], 5.5)
 
 const orbitTL = gsap.timeline({ repeat: -1, paused: true });
 orbitTL

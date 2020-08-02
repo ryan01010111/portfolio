@@ -5,6 +5,7 @@ history.scrollRestoration = "manual"; // declarations
 
 var langGroupEN = document.querySelectorAll('.lang-en');
 var langGroupRU = document.querySelectorAll('.lang-ru');
+var overlay = document.querySelector('#overlay');
 var demoContainer = document.querySelector('#demo-container');
 var demoPreview = document.querySelector('#demo-preview');
 var demoDevices = document.querySelector('#demo-devices');
@@ -45,7 +46,7 @@ var unlockBody = function unlockBody() {
 
 var toggleNav = function toggleNav() {
   document.querySelector('nav').classList.toggle('hide-nav');
-  document.querySelector('#overlay').classList.toggle('scale-0');
+  overlay.classList.toggle('scale-0');
 }; // event listeners
 
 
@@ -78,7 +79,7 @@ document.querySelector('#lang-btns-start').addEventListener('click', function (e
     document.querySelector('#welcome-window').classList.add('click-thru');
   }
 });
-[document.querySelector('#nav-menu-btn'), document.querySelector('#overlay'), document.querySelector('#nav-ul')].forEach(function (el) {
+[document.querySelector('#nav-menu-btn'), overlay, document.querySelector('#nav-ul')].forEach(function (el) {
   el.addEventListener('click', function () {
     toggleNav();
   });
@@ -123,17 +124,19 @@ document.querySelectorAll('.project-item').forEach(function (el) {
       demoDevices.appendChild(mobileImg);
       demoInfo.appendChild(info);
       demoContainer.classList.remove('scale-0');
-      lockBody();
       vid.play();
+      lockBody();
     }
   });
 });
-document.querySelector('#close-demo-btn').addEventListener('click', function () {
-  demoPreview.innerHTML = null;
-  demoDevices.innerHTML = null;
-  demoInfo.innerHTML = null;
-  demoContainer.classList.add('scale-0');
-  unlockBody();
+demoContainer.addEventListener('click', function (e) {
+  if (['demo-container', 'close-demo-btn'].includes(e.target.id)) {
+    demoPreview.innerHTML = null;
+    demoDevices.innerHTML = null;
+    demoInfo.innerHTML = null;
+    demoContainer.classList.add('scale-0');
+    unlockBody();
+  }
 });
 document.querySelector('#copyEmailBtn').addEventListener('click', function () {
   var el = document.createElement('textarea');
@@ -173,6 +176,19 @@ welcomeTL.to('#greeting-container', {
   opacity: 0,
   scale: 0
 }, 2);
+
+var cueScrollFade = function cueScrollFade() {
+  gsap.to('#learn-more-container', {
+    scrollTrigger: {
+      trigger: '#section2',
+      start: 'top 80%',
+      end: 'top 40%',
+      scrub: true
+    },
+    opacity: 0
+  });
+};
+
 var heroTL = gsap.timeline({
   paused: true,
   delay: 0.75
@@ -245,10 +261,10 @@ heroTL.to('#top1', {
   opacity: 1,
   margin: 0,
   width: '100%'
-}, 2.4).to('#learn-more, #arrow', {
+}, 2.4).from('#learn-more-container', {
   duration: 1.5,
-  opacity: 1
-}, 4);
+  opacity: 0
+}, 4).call(cueScrollFade, [], 5.5);
 var orbitTL = gsap.timeline({
   repeat: -1,
   paused: true
