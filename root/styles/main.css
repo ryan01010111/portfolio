@@ -425,7 +425,7 @@ nav {
   position: absolute;
   bottom: 0;
   left: calc(50% - 300px);
-  border-bottom: 22px solid #000;
+  border-bottom: 20px solid #000;
   z-index: 3;
 }
 
@@ -437,7 +437,7 @@ nav {
   z-index: 2;
 }
 
-#animate-python,
+#animate-redux,
 #animate-sass {
   position: absolute;
   opacity: 0;
@@ -488,18 +488,10 @@ nav {
   fill: #5dceeb;
 }
 
-#animate-python {
-  width: 100px;
+#animate-redux {
+  width: 140px;
   top: 260px;
   left: calc(32% - 50px);
-}
-
-.python-1 {
-  fill: #ffd931;
-}
-
-.python-2 {
-  fill: #4e68b1;
 }
 
 #animate-sass {
@@ -508,8 +500,7 @@ nav {
   left: calc(68% - 50px);
 }
 
-#animate-sass path,
-#sass-logo path {
+#animate-sass path {
   fill: #c92a45;
 }
 
@@ -555,8 +546,8 @@ nav {
   height: 100px;
 }
 
-#js-logo path {
-  fill: #f1e316;
+#ts-logo path {
+  fill: #3178c6;
 }
 
 #git-logo path {
@@ -920,11 +911,7 @@ footer {
     font-size: 1.2em;
   }
 
-  #skills-more {
-    justify-content: space-between;
-  }
   #skills-more span {
-    flex: 1;
     margin: 4px 12px;
   }
 

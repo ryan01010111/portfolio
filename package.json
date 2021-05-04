@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./main.js -o ./root/js/main.js"
+    "build": "babel ./main.js -w -o ./root/js/main.js",
+    "sass": "sass -w ./main.scss ./root/styles/main.css"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,6 @@
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.11.0"
-  }
+  },
+  "dependencies": {}
 }

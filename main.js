@@ -265,7 +265,7 @@ gsap.to('#animate-react', {
     ease: 'none'
 });
 
-gsap.to('#animate-python', {
+gsap.to('#animate-redux', {
     scrollTrigger: logoTrigger2,
     opacity: 0.9,
     width: 90,
@@ -295,10 +295,10 @@ const skillsTL = gsap.timeline({
 });
 
 skillsTL
-    .from('#js-logo', { duration: 2, opacity: 0, x: 250, y: -300 })
-    .from('#react-logo', { duration: 2, opacity: 0, x: -50, y: -300 }, 0.3)
+    .from('#ts-logo', { duration: 2, opacity: 0, x: 250, y: -300 })
+    .from('#psql-logo', { duration: 2, opacity: 0, x: -50, y: -300 }, 0.3)
     .from('#mdb-logo', { duration: 2, opacity: 0, x: -150, y: -300 }, 0.6)
-    .from('#sass-logo', { duration: 2, opacity: 0, x: 50, y: -420 }, 0.9)
+    .from('#redux-logo', { duration: 2, opacity: 0, x: 50, y: -420 }, 0.9)
     .from('#skills-header', { duration: 1, opacity: 0, x: -250 }, 1)
 
 const portfolioTL = gsap.timeline({

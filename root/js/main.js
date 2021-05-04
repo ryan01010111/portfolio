@@ -358,7 +358,7 @@ gsap.to('#animate-react', {
   rotation: 480,
   ease: 'none'
 });
-gsap.to('#animate-python', {
+gsap.to('#animate-redux', {
   scrollTrigger: logoTrigger2,
   opacity: 0.9,
   width: 90,
@@ -384,12 +384,12 @@ var skillsTL = gsap.timeline({
     toggleActions: 'restart pause resume none'
   }
 });
-skillsTL.from('#js-logo', {
+skillsTL.from('#ts-logo', {
   duration: 2,
   opacity: 0,
   x: 250,
   y: -300
-}).from('#react-logo', {
+}).from('#psql-logo', {
   duration: 2,
   opacity: 0,
   x: -50,
@@ -399,7 +399,7 @@ skillsTL.from('#js-logo', {
   opacity: 0,
   x: -150,
   y: -300
-}, 0.6).from('#sass-logo', {
+}, 0.6).from('#redux-logo', {
   duration: 2,
   opacity: 0,
   x: 50,
