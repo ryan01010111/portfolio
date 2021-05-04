@@ -84,7 +84,7 @@ document.querySelector('#lang-btns-start').addEventListener('click', e => {
 [document.querySelector('#nav-menu-btn'), overlay, document.querySelector('#nav-ul')].forEach(el => {
     el.addEventListener('click', () => {
         toggleNav();
-    })
+    });
 });
 
 document.querySelectorAll('.project-item').forEach(el => {
@@ -126,8 +126,8 @@ document.querySelectorAll('.project-item').forEach(el => {
             vid.play();
             lockBody();
         }
-    }
-)});
+    });
+});
 
 demoContainer.addEventListener('click', e => {
     if (['demo-container', 'close-demo-btn'].includes(e.target.id)) {
@@ -152,6 +152,8 @@ document.querySelector('#copyEmailBtn').addEventListener('click', () => {
     document.body.removeChild(el);
     alert('Copied email address.');
 });
+
+document.querySelector('#cr-year').innerHTML = (new Date()).getFullYear();
 
 // animations
 gsap.registerPlugin(ScrollTrigger);
@@ -219,14 +221,14 @@ orbitTL
         { x: -300, y: -120, scale: 0.7, zIndex: 4 },
         { duration: 1.25, x: 0, y: 0, scale: 1, zIndex: 4, ease: 'power1.in' })
 
-const logoTrigger =  {
+const logoTrigger = {
     trigger: '#section2',
     start: 'top center',
     end: '80% center',
     scrub: true
 };
 
-const logoTrigger2 =  {
+const logoTrigger2 = {
     trigger: '#section2',
     start: 'top 70%',
     end: '80% center',

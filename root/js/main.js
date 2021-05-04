@@ -150,7 +150,8 @@ document.querySelector('#copyEmailBtn').addEventListener('click', function () {
   document.execCommand('copy');
   document.body.removeChild(el);
   alert('Copied email address.');
-}); // animations
+});
+document.querySelector('#cr-year').innerHTML = new Date().getFullYear(); // animations
 
 gsap.registerPlugin(ScrollTrigger);
 var welcomeTL = gsap.timeline({
