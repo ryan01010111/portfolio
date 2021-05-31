@@ -3,8 +3,6 @@
 // prevent auto-scroll on refresh
 history.scrollRestoration = "manual"; // declarations
 
-var langGroupEN = document.querySelectorAll('.lang-en');
-var langGroupRU = document.querySelectorAll('.lang-ru');
 var overlay = document.querySelector('#overlay');
 var demoContainer = document.querySelector('#demo-container');
 var demoPreview = document.querySelector('#demo-preview');
@@ -52,22 +50,12 @@ var toggleNav = function toggleNav() {
 
 document.querySelectorAll('.lang-btn-en').forEach(function (btn) {
   btn.addEventListener('click', function () {
-    langGroupRU.forEach(function (item) {
-      item.classList.add('no-display');
-    });
-    langGroupEN.forEach(function (item) {
-      item.classList.remove('no-display');
-    });
+    document.documentElement.lang = 'en';
   });
 });
 document.querySelectorAll('.lang-btn-ru').forEach(function (btn) {
   btn.addEventListener('click', function () {
-    langGroupEN.forEach(function (item) {
-      item.classList.add('no-display');
-    });
-    langGroupRU.forEach(function (item) {
-      item.classList.remove('no-display');
-    });
+    document.documentElement.lang = 'ru';
   });
 });
 document.querySelector('#lang-btns-start').addEventListener('click', function (e) {
@@ -178,6 +166,10 @@ welcomeTL.to('#greeting-container', {
   scale: 0
 }, 2);
 
+var forcePositionRecalc = function forcePositionRecalc() {
+  document.querySelector('#scroll-indicator').classList.remove('temp-position');
+};
+
 var cueScrollFade = function cueScrollFade() {
   gsap.to('#learn-more-container', {
     scrollTrigger: {
@@ -265,7 +257,7 @@ heroTL.to('#top1', {
 }, 2.4).from('#learn-more-container', {
   duration: 1.5,
   opacity: 0
-}, 4).call(cueScrollFade, [], 5.5);
+}, 4).call(forcePositionRecalc, [], 1).call(cueScrollFade, [], 5.5);
 var orbitTL = gsap.timeline({
   repeat: -1,
   paused: true

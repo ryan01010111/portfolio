@@ -29,6 +29,14 @@ $font-secondary: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
 
 html {
   scroll-behavior: smooth;
+
+  &[lang="en"] .lang-ru {
+    display: none;
+  }
+
+  &[lang="ru"] .lang-en {
+    display: none;
+  }
 }
 
 body {
@@ -49,10 +57,6 @@ a {
 
 .scale-0 {
   transform: scale(0);
-}
-
-.no-display {
-  display: none;
 }
 
 .click-thru {
@@ -358,12 +362,16 @@ nav {
   background-color: #fff;
   border-radius: 10px;
 
+  &.temp-position {
+    margin: 0;
+  }
+
   &::before {
     content: "";
     position: absolute;
-    padding: 10px 4px;
     top: 4px;
     left: 8px;
+    padding: 10px 4px;
     border-radius: 12px;
     background-color: #000;
   }
@@ -371,9 +379,9 @@ nav {
   &::after {
     content: "";
     position: absolute;
-    padding: 6px 4px;
     top: 4px;
     left: 8px;
+    padding: 6px 4px;
     border-radius: 12px;
     background-color: $light-blue;
     animation: scroll 1s infinite ease;

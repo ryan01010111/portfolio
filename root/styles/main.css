@@ -25,6 +25,12 @@
 html {
   scroll-behavior: smooth;
 }
+html[lang=en] .lang-ru {
+  display: none;
+}
+html[lang=ru] .lang-en {
+  display: none;
+}
 
 body {
   font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -43,10 +49,6 @@ a {
 
 .scale-0 {
   transform: scale(0);
-}
-
-.no-display {
-  display: none;
 }
 
 .click-thru {
@@ -338,21 +340,24 @@ nav {
   background-color: #fff;
   border-radius: 10px;
 }
+#scroll-indicator.temp-position {
+  margin: 0;
+}
 #scroll-indicator::before {
   content: "";
   position: absolute;
-  padding: 10px 4px;
   top: 4px;
   left: 8px;
+  padding: 10px 4px;
   border-radius: 12px;
   background-color: #000;
 }
 #scroll-indicator::after {
   content: "";
   position: absolute;
-  padding: 6px 4px;
   top: 4px;
   left: 8px;
+  padding: 6px 4px;
   border-radius: 12px;
   background-color: #09dbf7;
   animation: scroll 1s infinite ease;
