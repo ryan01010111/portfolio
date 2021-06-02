@@ -72,6 +72,24 @@ document.querySelector('#lang-btns-start').addEventListener('click', function (e
     toggleNav();
   });
 });
+
+var toggleTRS = function toggleTRS(lock) {
+  document.querySelector('#trs-demo').classList.toggle('scale-0');
+
+  if (lock) {
+    lockBody();
+  } else {
+    unlockBody();
+  }
+};
+
+document.querySelector('#trs-btn').addEventListener('click', toggleTRS);
+document.querySelector('#trs-block').addEventListener('click', function () {
+  return toggleTRS(true);
+});
+document.querySelector('#trs-close').addEventListener('click', function () {
+  return toggleTRS(false);
+});
 document.querySelectorAll('.project-item').forEach(function (el) {
   el.addEventListener('click', function (e) {
     var selected = e.currentTarget.dataset.item;
@@ -409,7 +427,7 @@ var portfolioTL = gsap.timeline({
     toggleActions: 'play pause resume none'
   }
 });
-portfolioTL.from('.project-item', {
+portfolioTL.from('.project-item, #trs-btn, #trs-block', {
   duration: 2,
   stagger: 0.2,
   opacity: 0,

@@ -624,6 +624,68 @@ nav {
   align-items: center;
 }
 
+#trs-btn {
+  position: absolute;
+  top: -260px;
+  left: 160px;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  background-color: #000;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px #09dbf7;
+}
+#trs-btn path {
+  fill: #fff;
+}
+#trs-btn:hover path {
+  fill: #09dbf7;
+}
+
+#trs-demo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#trs-container {
+  height: max-content;
+}
+#trs-container::before {
+  content: "React Time Range Selector";
+  margin: 0 0 28px 0;
+  font-size: 1.4em;
+  color: #09dbf7;
+}
+
+#trs-selection {
+  width: 80%;
+  margin: 0 0 20px 0;
+  padding: 8px 0;
+  border: 4px solid #fff;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+#time-range-selector {
+  touch-action: none;
+}
+
+#time-range-selector circle:nth-child(1) {
+  stroke: #555;
+}
+
+#time-range-selector text {
+  stroke: #fff;
+  fill: #fff;
+}
+
+#trs-block {
+  display: none;
+}
+
 .project-item {
   width: 320px;
   height: 160px;
@@ -640,7 +702,7 @@ nav {
   cursor: pointer;
 }
 
-.project-item:nth-child(2) {
+.project-item:nth-child(4) {
   position: absolute;
   top: -360px;
   left: calc(50% - 160px);
@@ -664,21 +726,28 @@ nav {
   filter: grayscale(0%);
 }
 
+#trs-demo,
 #demo-container {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 12;
 }
 
+#trs-demo {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+#trs-close,
 #close-demo-btn {
   position: fixed;
   bottom: 34px;
-  left: 50vw;
+  left: 50%;
   transform: translateX(-50%);
+  width: 72px;
   padding: 8px 18px;
   color: #09dbf7;
   background-color: #555;
@@ -686,11 +755,12 @@ nav {
   outline: none;
   border: none;
   border-radius: 4px;
-  z-index: 5;
 }
+#trs-close:hover,
 #close-demo-btn:hover {
   background-color: #000;
 }
+#trs-close span,
 #close-demo-btn span {
   pointer-events: none;
 }
@@ -897,7 +967,22 @@ footer {
     flex-direction: column;
   }
 
-  .project-item:nth-child(2) {
+  #trs-btn {
+    display: none;
+  }
+
+  #trs-block {
+    display: block;
+    width: 320px;
+    margin: 24px 0 12px 0;
+    padding: 22px 12px;
+    text-align: center;
+    font-size: 1.4em;
+    background-color: #000;
+    box-shadow: 0 4px 12px #09dbf7;
+  }
+
+  .project-item:nth-child(4) {
     position: static;
   }
 
