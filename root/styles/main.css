@@ -1093,6 +1093,10 @@ footer {
     width: 100%;
     height: calc((100vw - 40px) / 2);
   }
+
+  #trs-block {
+    width: 100%;
+  }
 }
 @media screen and (max-height: 599px) {
   #greeting-container {
