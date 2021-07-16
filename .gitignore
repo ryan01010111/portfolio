@@ -1,6 +1,7 @@
 **/images-original
 **/images
 **/media
+/root/styles
 **/.netlify
 
 ### node ###

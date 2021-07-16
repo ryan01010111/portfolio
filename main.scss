@@ -632,7 +632,7 @@ nav {
   font-family: $font-secondary;
 
   span {
-    margin: 0 12px;
+    margin: 4px 12px;
     padding: 8px 12px;
     white-space: nowrap;
     border: 2px solid #fff;
@@ -1065,10 +1065,6 @@ footer {
       margin: 6px 20px;
       font-size: 1.2em;
     }
-  }
-
-  #skills-more span {
-    margin: 4px 12px;
   }
 
   #close-demo-btn {
