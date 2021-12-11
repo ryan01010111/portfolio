@@ -447,18 +447,26 @@ nav {
 
 #black-hole {
   width: 600px;
+  height: 360px;
   position: absolute;
   bottom: 20px;
   left: calc(50% - 300px);
+  background: url("../images/black_hole.jpg") center/cover no-repeat;
+  border-radius: 50%;
+  box-shadow: inset 0 0 40px 0px #000;
   z-index: 1;
 }
 
 #black-hole2 {
   width: 600px;
+  height: 145px;
   position: absolute;
   bottom: 0;
   left: calc(50% - 300px);
+  background: url("../images/black_hole_bottom.png") center/cover no-repeat;
+  border-radius: 50%;
   border-bottom: 20px solid #000;
+  box-shadow: inset 0 -48px 40px 0 #000;
   z-index: 3;
 }
 
