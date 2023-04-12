@@ -123,7 +123,12 @@ document.querySelectorAll('.project-item').forEach(function (el) {
         vid = null;
         mobileImg = null;
         repoLink.href = '';
-    }
+    } // exlude previews for now
+
+
+    vid = document.createElement('span');
+    vid.innerHTML = 'Previews are disabled while I work on updating them.';
+    vid.style.color = '#fff152';
 
     if (vid && mobileImg) {
       demoPreview.appendChild(vid);

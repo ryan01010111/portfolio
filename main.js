@@ -118,6 +118,11 @@ document.querySelectorAll('.project-item').forEach(el => {
                 repoLink.href = '';
         }
 
+        // exlude previews for now
+        vid = document.createElement('span');
+        vid.innerHTML = 'Previews are disabled while I work on updating them.';
+        vid.style.color = '#fff152';
+
         if (vid && mobileImg) {
             demoPreview.appendChild(vid);
             demoDevices.appendChild(mobileImg);

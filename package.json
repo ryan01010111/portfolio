@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel ./main.js -w -o ./root/js/main.js",
-    "sass": "sass -w ./main.scss ./root/styles/main.css"
+    "dev:js": "babel ./main.js -w -o ./root/js/main.js",
+    "dev:sass": "sass -w ./main.scss ./root/styles/main.css",
+    "build": "babel ./main.js -o ./root/js/main.js && sass ./main.scss ./root/styles/main.css",
+    "build:js": "babel ./main.js -o ./root/js/main.js",
+    "build:sass": "sass ./main.scss ./root/styles/main.css"
   },
   "repository": {
     "type": "git",
